@@ -19,21 +19,11 @@ export default class Button extends React.Component {
 
     render () {
         const {component, type, disabled, loading, size, plain, className, children, ...others} = this.props;
-        console.log(component);
         const Component = component ? component : this.props.href || type === 'vcode' ? 'a' : 'button';
-        // const cls = type === 'vcode' ? classNames('weui-vcode-btn', {[className]: className}) : classNames({
-        //     'weui-btn': true,
-        //     'weui-btn_mini': size === 'small',
-        //     'weui-btn_primary': type === 'primary' && !plain,
-        //     'weui-btn_default': type === 'default' && !plain,
-        //     'weui-btn_warn': type === 'warn',
-        //     'weui-btn_plain-primary': type === 'primary' && plain,
-        //     'weui-btn_plain-default': type === 'default' && plain,
-        //     'weui-btn_disabled': this.props.disabled && !plain,
-        //     'weui-btn_plain-disabled': this.props.disabled && plain,
-        //     [className]: className
-        // });
-        const cls = classNames({
+        const cls = type === 'vcode' ? classNames({
+            'weui-vcode-btn': true,
+            [className]:className
+        }) : classNames({
             'weui-btn': true,
             'weui-btn_mini': size === 'small',
             'weui-btn_primary': type === 'primary' && !plain,

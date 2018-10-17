@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from '../../util/classnames';
 
+
 const CellTitle = (props) => {
     const { className, children, ...others } = props;
     const cls = classNames({
-        'weui-cells__title': true,
+        'weui-cells__tips': true,
         [className]: className
     });
 
