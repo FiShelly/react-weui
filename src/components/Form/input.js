@@ -47,6 +47,17 @@ export default class Input extends React.Component {
         );
     }
 
+    inputHTMLHeader (children) {
+        if(!children) {
+            return;
+        }
+        return (
+            <CellHeader>
+                <label className={'weui-label'}>{children}</label>
+            </CellHeader>
+        )
+    }
+
     render () {
         const {disabled, vcodeDisabled, vtext, vsrc, className, children, type, onVCodeClick, ...others} = this.props;
         const realType = type === 'vcode' ? 'text' : type;
@@ -57,9 +68,7 @@ export default class Input extends React.Component {
 
         return (
             <Cell className={cls} vcode={type === Input.TYPE} component={'label'}>
-                <CellHeader>
-                    <label className={'weui-label'}>{children}</label>
-                </CellHeader>
+                {this.inputHTMLHeader(children)}
                 <CellBody>
                     <input className="weui-input" disabled={disabled} type={realType} {...others}/>
                 </CellBody>

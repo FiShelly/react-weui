@@ -8,6 +8,7 @@ const Cells = (props) => {
         'weui-cells': true,
         'weui-cells_checkbox': role.includes('checkbox'),
         'weui-cells_radio': role.includes('radio'),
+        'weui-cells_form': role.includes('form'),
         [className]: className
     });
 
