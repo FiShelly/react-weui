@@ -28,6 +28,7 @@ export default class Cell extends React.Component {
             [className]: className
         });
 
+
         return (
             <CellComponent {...others}
                            href={href}

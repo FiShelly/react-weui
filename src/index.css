@@ -5,3 +5,7 @@ body {
   font-family: -apple-system-font, "Helvetica Neue", sans-serif;
 }
 
+.weui-form-preview__value {
+  font-style: normal;
+}
+
