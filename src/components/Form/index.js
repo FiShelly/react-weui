@@ -6,7 +6,7 @@ import Textarea from './textarea';
 import Select from './select';
 import Agree from './agree';
 import Slider from './slider';
-
+import Uploader from './uploader';
 export {
     Radio,
     Checkbox,
@@ -15,5 +15,6 @@ export {
     Textarea,
     Select,
     Agree,
-    Slider
+    Slider,
+    Uploader
 };

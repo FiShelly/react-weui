@@ -10,7 +10,8 @@ export default class Select extends React.Component {
         isAfter: PropTypes.bool,
         inputDisabled: PropTypes.bool,
         selectDisabled: PropTypes.bool,
-        afterText: PropTypes.string
+        afterText: PropTypes.string,
+        data: PropTypes.any
     };
 
     static defaultProps = {
@@ -22,16 +23,6 @@ export default class Select extends React.Component {
         afterText: ''
     };
 
-    static SelectHTML (children, disabled, others) {
-        return (
-            <select className={'weui-select'}
-                    disabled={disabled}
-                    {...others}>
-                {children}
-            </select>
-        );
-    }
-
     getNewProps (others, prefix) {
         const props = {};
         Object.keys(others).forEach(key => {
@@ -42,8 +33,36 @@ export default class Select extends React.Component {
         return props;
     }
 
-    selectBdHTML () {
-        const {inputDisabled, selectDisabled, isAfter,disabled, isBefore,afterText, className, children, ...others} = this.props;
+    renderOptHTML () {
+        const {data} = this.props;
+        if (data instanceof Array) {
+            return data.map((val, idx) => {
+                return (
+                    <option key={idx} value={idx}>{val}</option>
+                );
+            });
+        } else if (typeof data === 'object') {
+            return Object.keys(data).map((val) => {
+                return (
+                    <option key={val} value={val}>data[val]</option>
+                );
+            });
+        }
+    }
+
+    renderSelectHTML (disabled, others) {
+        const {children, data} = this.props;
+        return (
+            <select className={'weui-select'}
+                    disabled={disabled}
+                    {...others}>
+                {data ? this.renderOptHTML() : children}
+            </select>
+        );
+    }
+
+    renderSelectBdHTML () {
+        const {inputDisabled, selectDisabled, isAfter, disabled, isBefore, afterText, className, children, data, ...others} = this.props;
         if (isBefore) {
             const inputProp = this.getNewProps(others, 'input-');
             return (
@@ -56,31 +75,31 @@ export default class Select extends React.Component {
         } else {
             return (
                 <CellBody>
-                    {Select.SelectHTML(children, (disabled || selectDisabled), others)}
+                    {this.renderSelectHTML((disabled || selectDisabled), others)}
                 </CellBody>);
         }
     }
 
-    selectHdHTML () {
-        const {afterText, inputDisabled, selectDisabled, disabled, isBefore,isAfter, className, children, ...others} = this.props;
+    renderSelectHdHTML () {
+        const {afterText, inputDisabled, selectDisabled, disabled, isBefore, isAfter, className, children, data, ...others} = this.props;
         if (isBefore) {
             const selectProps = this.getNewProps(others, 'select-');
             return (
                 <CellHeader>
-                    {Select.SelectHTML(children, (disabled || selectDisabled), selectProps)}
+                    {this.renderSelectHTML((disabled || selectDisabled), selectProps)}
                 </CellHeader>
             );
         } else if (isAfter) {
             return (
                 <CellHeader>
-                    <label  className="weui-label"> {afterText}</label>
+                    <label className="weui-label"> {afterText}</label>
                 </CellHeader>
-            )
+            );
         }
     }
 
     render () {
-        const {disabled, isBefore,isAfter, className} = this.props;
+        const {disabled, isBefore, isAfter, className} = this.props;
         const cls = classNames({
             'weui-cell_disabled': disabled,
             'weui-cell_select': true,
@@ -91,8 +110,8 @@ export default class Select extends React.Component {
 
         return (
             <Cell className={cls}>
-                {this.selectHdHTML()}
-                {this.selectBdHTML()}
+                {this.renderSelectHdHTML()}
+                {this.renderSelectBdHTML()}
             </Cell>
         );
     }
