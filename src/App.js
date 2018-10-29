@@ -4,16 +4,23 @@ import { Button, ButtonPreview } from './components/Button';
 import { Cells, Cell, CellTitle, CellBody, CellHeader, CellTips, CellFooter } from './components/Cells';
 import { Radio, Checkbox, Input, Switch, Textarea, Select, Agree, Slider, Uploader } from './components/Form/';
 import { Badge } from './components/Badge';
+import { Actionsheet } from './components/Actionsheet';
 
 class App extends Component {
 
     constructor () {
         super();
         this.opts = ['test 1', 'test 2'];
+        this.state = {
+            isShow:false
+        }
     }
 
     handleClick (e) {
         console.log(e.target.value);
+        this.setState({
+            isShow: !this.state.isShow
+        })
     }
 
     onError (e) {
@@ -33,10 +40,47 @@ class App extends Component {
         // },500)
     }
 
+    handleMaskClick() {
+        this.setState({
+            isShow: false
+        })
+    }
+
     render () {
+
+        const menus = [
+            {
+                label: 'menu item 0',
+                onClick: (e) => {
+                    console.log(e, 0, this.opts);
+                }
+            },
+            {
+                label: 'menu item 1',
+                onClick: (e) => {
+                    console.log(e, 1, this.opts);
+                }
+            },
+            {
+                label: 'menu item 2',
+                onClick: (e) => {
+                    console.log(e, 2, this.opts);
+                }
+            }
+        ];
+
+        const action = [
+            {
+                label: 'action item 0',
+                onClick: (e) => {
+                    console.log(e, 'action 0', this.opts);
+                }
+            }
+        ];
+
         return (
             <div className="App">
-                <Button component='button'>sss</Button>
+                <Button component='button' onClick={this.handleClick.bind(this)}>sss</Button>
                 <CellTitle>test1</CellTitle>
                 <Cells role={'checkbox'}>
                     <Cell>
@@ -98,6 +142,7 @@ class App extends Component {
                         </CellBody>
                     </Cell>
                 </Cells>
+                <Actionsheet type="android" menus={menus} onMaskClick={this.handleMaskClick.bind(this)} action={action} show={this.state.isShow}>测试下~~~</Actionsheet>
             </div>
         );
     }

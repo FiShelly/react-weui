@@ -9,6 +9,7 @@ export default class Uploader extends React.Component {
         title: PropTypes.string,
         limit: PropTypes.number,
         multiple: PropTypes.bool,
+        data: PropTypes.array,
         onFileChange: PropTypes.func,
         onError: PropTypes.func,
         onFileClick: PropTypes.func
@@ -18,13 +19,17 @@ export default class Uploader extends React.Component {
         disabled: false,
         title: '图片上传',
         limit: 1,
+        data: [],
         multiple: false
     };
 
     constructor (props) {
         super(props);
         this.state = {
-            fileList: [],
+            fileList: props.data.map((val,idx) => {
+                val.idx = idx;
+                return val;
+            }),
         };
 
     }
