@@ -4,15 +4,22 @@ import classNames from '../../util/classnames';
 
 export default class ButtonDialog extends React.Component {
     static propTypes = {
-        primary: PropTypes.bool
+        primary: PropTypes.bool,
+        onClose: PropTypes.func
     };
 
     static defaultProps = {
-        primary: false,
+        primary: false
     };
 
+    handleClick () {
+        const {onClick, onClose} = this.props;
+        onClick && onClick();
+        onClose && onClose();
+    }
+
     render () {
-        const {primary, className, children, ...others} = this.props;
+        const {primary, className, children, onClick, onClose, ...others} = this.props;
         const cls = classNames({
             'weui-dialog__btn': true,
             [`weui-dialog__btn_${primary ? 'primary' : 'default'}`]: true,
@@ -20,7 +27,7 @@ export default class ButtonDialog extends React.Component {
         });
 
         return (
-            <a className={cls} {...others}>
+            <a className={cls} onClick={this.handleClick.bind(this)} {...others}>
                 {children}
             </a>
         );

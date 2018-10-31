@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from '../../util/classnames';
 import { Mask } from '../Mask/mask';
-import './actionsheet.less';
+import './actionsheet.scss';
 
 export default class MediaBoxInfo extends React.Component {
     static propTypes = {

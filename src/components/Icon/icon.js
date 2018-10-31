@@ -9,20 +9,22 @@ import classNames from '../../util/classnames';
 class Icon extends React.Component {
     static propTypes = {
         value: PropTypes.string,
-        size: PropTypes.string
+        size: PropTypes.string,
+        circle: PropTypes.bool
     };
 
     static defaultProps = {
         value: 'success',
+        circle: true,
         size: 'small'
     };
 
     render() {
-        const {value, size, className, primary, ...others} = this.props;
+        const {value, size, className, circle,primary, ...others} = this.props;
 
         const cls = classNames({
-            ['weui-icon-' + value]: value !== 'loading',
-            'weui-icon_msg': size === 'large',
+            [`weui-icon-${value}${circle || '-no-circle'}` ]: value !== 'loading',
+            'weui-icon_msg': size === 'large' && circle,
             'weui-loading': value === 'loading',
             [className]: className
         });

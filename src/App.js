@@ -5,6 +5,9 @@ import { Cells, Cell, CellTitle, CellBody, CellHeader, CellTips, CellFooter } fr
 import { Radio, Checkbox, Input, Switch, Textarea, Select, Agree, Slider, Uploader } from './components/Form/';
 import { Badge } from './components/Badge';
 import { Actionsheet } from './components/Actionsheet';
+import { ToastService,DialogService } from './service';
+
+import Toast from './components/Toast/toast';
 
 class App extends Component {
 
@@ -12,15 +15,34 @@ class App extends Component {
         super();
         this.opts = ['test 1', 'test 2'];
         this.state = {
-            isShow:false
-        }
+            isShow: false
+        };
     }
 
     handleClick (e) {
-        console.log(e.target.value);
-        this.setState({
-            isShow: !this.state.isShow
-        })
+        // console.log(e.target.value);
+        // this.setState({
+        //     isShow: !this.state.isShow
+        // })
+        DialogService.showDialog({
+            title: 'test',
+            text: 'test !!!!!!!!',
+            buttons: [
+                {
+                    label: '123',
+                    onClick: () => {
+                        console.log('erd');
+                    }
+                }
+            ]
+        });
+        // setTimeout(() => {
+        //     ToastService.showToast({text: 'success...'});
+        // }, 2000);
+        //
+        // setTimeout(() => {
+        //     ToastService.hideLoading();
+        // }, 100000);
     }
 
     onError (e) {
@@ -40,15 +62,28 @@ class App extends Component {
         // },500)
     }
 
-    handleMaskClick() {
-        this.setState({
-            isShow: false
-        })
+    handleMaskClick () {
+        // this.setState({
+        //     isShow: false
+        // })
+
     }
 
     render () {
 
         const menus = [
+            {
+                label: 'menu item 0',
+                onClick: (e) => {
+                    console.log(e, 0, this.opts);
+                }
+            },
+            {
+                label: 'menu item 0',
+                onClick: (e) => {
+                    console.log(e, 0, this.opts);
+                }
+            },
             {
                 label: 'menu item 0',
                 onClick: (e) => {
@@ -142,7 +177,9 @@ class App extends Component {
                         </CellBody>
                     </Cell>
                 </Cells>
-                <Actionsheet type="android" menus={menus} onMaskClick={this.handleMaskClick.bind(this)} action={action} show={this.state.isShow}>测试下~~~</Actionsheet>
+                <Actionsheet type="android" menus={menus} onMaskClick={this.handleMaskClick.bind(this)} action={action}
+                             show={this.state.isShow}>测试下~~~</Actionsheet>
+                {/*<Toast type={'loading'} show={true}>操作成功~</Toast>*/}
             </div>
         );
     }
