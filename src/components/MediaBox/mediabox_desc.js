@@ -15,4 +15,4 @@ const MediaBoxDesc = (props) => {
     );
 };
 
-export { MediaBoxDesc };
+export default MediaBoxDesc;

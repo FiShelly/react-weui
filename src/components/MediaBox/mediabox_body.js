@@ -15,4 +15,4 @@ const MediaBoxBody = (props) => {
     );
 };
 
-export { MediaBoxBody };
+export default MediaBoxBody;

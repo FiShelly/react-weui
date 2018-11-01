@@ -15,4 +15,4 @@ const PanelBody = (props) => {
     );
 };
 
-export { PanelBody };
+export default PanelBody;

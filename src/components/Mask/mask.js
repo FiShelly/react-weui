@@ -23,4 +23,4 @@ Mask.defaultProps = {
     transparent: false
 };
 
-export { Mask };
+export default Mask;

@@ -13,4 +13,4 @@ const FooterText = (props) => {
     );
 };
 
-export { FooterText };
+export default FooterText;

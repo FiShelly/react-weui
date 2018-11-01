@@ -15,4 +15,4 @@ const PanelHeader = (props) => {
     );
 };
 
-export { PanelHeader };
+export default PanelHeader;

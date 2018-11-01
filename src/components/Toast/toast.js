@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from '../../util/classnames';
 import Icon from '../Icon/icon';
-import { Mask } from '../Mask/mask';
+import { Mask } from '../Mask';
 
 export default class Toast extends React.Component {
     static propTypes = {

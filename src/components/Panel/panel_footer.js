@@ -18,4 +18,4 @@ const PanelFooter = (props) => {
     );
 };
 
-export { PanelFooter };
+export default PanelFooter;

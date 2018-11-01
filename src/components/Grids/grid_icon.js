@@ -13,4 +13,4 @@ const GridIcon = (props) => {
     );
 };
 
-export { GridIcon };
+export default GridIcon;

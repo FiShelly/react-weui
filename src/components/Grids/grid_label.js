@@ -13,4 +13,4 @@ const GridLabel = (props) => {
     );
 };
 
-export { GridLabel };
+export default GridLabel;

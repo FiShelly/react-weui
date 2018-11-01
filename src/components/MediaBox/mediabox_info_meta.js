@@ -25,4 +25,4 @@ MediaBoxInfoMeta.defaultProps = {
     extra: false
 };
 
-export { MediaBoxInfoMeta };
+export default MediaBoxInfoMeta;

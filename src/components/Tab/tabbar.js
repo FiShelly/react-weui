@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from '../../util/classnames';
 
-const PreviewBody = (props) => {
+const Tabbar = (props) => {
     const {className, children, ...others} = props;
     const cls = classNames({
-        'weui-form-preview__bd': true,
+        'weui-tabbar': true,
         [className]: className
     });
 
@@ -15,6 +15,4 @@ const PreviewBody = (props) => {
     );
 };
 
-
-
-export default PreviewBody;
+export default Tabbar;

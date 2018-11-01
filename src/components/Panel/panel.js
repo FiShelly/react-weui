@@ -25,4 +25,4 @@ Panel.defaultProps = {
     access: false
 };
 
-export { Panel };
+export default Panel;

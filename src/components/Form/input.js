@@ -32,7 +32,7 @@ export default class Input extends React.Component {
     inputHTMLFooter (type, realType, vsrc, vtext) {
         let Component = null;
         if (Input.TYPE === type && vsrc) {
-            Component = (<img className="weui-vcode-img" onClick={this.onVCodeClick.bind(this)} src={vsrc}/>);
+            Component = (<img className="weui-vcode-img" alt='' onClick={this.onVCodeClick.bind(this)} src={vsrc}/>);
         } else if (Input.TYPE === type) {
             Component = (<Button disabled={this.props.vcodeDisabled} type={type}
                                  onClick={this.onVCodeClick.bind(this)}>{vtext}</Button>);

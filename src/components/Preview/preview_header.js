@@ -17,4 +17,4 @@ const PreviewHeader = (props) => {
 
 
 
-export { PreviewHeader };
+export default PreviewHeader;

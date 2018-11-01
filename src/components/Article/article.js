@@ -13,4 +13,4 @@ const Article = (props) => {
     );
 };
 
-export { Article };
+export default Article;

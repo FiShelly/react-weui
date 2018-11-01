@@ -29,4 +29,4 @@ MediaBox.defaultProps = {
     type: 'text'
 };
 
-export { MediaBox };
+export default MediaBox;

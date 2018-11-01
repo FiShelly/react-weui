@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from '../../util/classnames';
-import { Mask } from '../Mask/mask';
+import { Mask } from '../Mask';
 import {ButtonDialog} from '../Button';
 
 export default class Toast extends React.Component {

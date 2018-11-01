@@ -28,4 +28,4 @@ PreviewItem.defaultProps = {
     value: false,
 };
 
-export { PreviewItem };
+export default PreviewItem;

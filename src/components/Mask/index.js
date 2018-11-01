@@ -1,5 +1,5 @@
-import Mask from './index';
+import Mask from './mask';
 
 export {
     Mask
-}
+};

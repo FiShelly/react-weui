@@ -23,4 +23,4 @@ const MediaBoxHeader = (props) => {
     );
 };
 
-export { MediaBoxHeader };
+export default MediaBoxHeader;

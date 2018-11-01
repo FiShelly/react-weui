@@ -13,4 +13,4 @@ const FooterLink = (props) => {
     );
 };
 
-export { FooterLink };
+export default FooterLink;

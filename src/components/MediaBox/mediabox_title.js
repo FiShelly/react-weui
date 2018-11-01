@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from '../../util/classnames';
 
-const MediaBoxDesc = (props) => {
+const MediaBoxTitle = (props) => {
     const {className, children, ...others} = props;
     const cls = classNames({
         'weui-media-box__title': true,
@@ -15,4 +15,4 @@ const MediaBoxDesc = (props) => {
     );
 };
 
-export { MediaBoxDesc };
+export default MediaBoxTitle;

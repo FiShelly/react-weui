@@ -86,7 +86,6 @@ export default class Slider extends React.Component {
     }
 
     setHandler (distance) {
-        console.log(distance);
         let dist, percent;
         const {min, max, step, onChange} = this.props;
         const {stepWidth, innerProgress, innerWidth} = this.state;

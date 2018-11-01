@@ -34,4 +34,4 @@ LoadMore.defaultProps = {
     showDot: false
 };
 
-export { LoadMore };
+export default LoadMore;

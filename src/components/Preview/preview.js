@@ -15,6 +15,4 @@ const Preview = (props) => {
     );
 };
 
-
-
-export { Preview };
+export default Preview;

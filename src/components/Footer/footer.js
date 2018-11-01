@@ -13,4 +13,4 @@ const Footer = (props) => {
     );
 };
 
-export { Footer };
+export default Footer;

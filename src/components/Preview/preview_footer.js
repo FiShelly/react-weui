@@ -17,4 +17,4 @@ const PreviewFooter = (props) => {
 
 
 
-export { PreviewFooter };
+export default PreviewFooter;

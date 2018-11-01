@@ -50,4 +50,4 @@ Progress.defaultProps = {
     showCancel: true
 };
 
-export { Progress };
+export default Progress;
