@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from '../../util/classnames';
 import Icon from '../Icon/icon';
+import { GalleryService } from '../../service';
+import './uploader.scss';
 
 export default class Uploader extends React.Component {
     static propTypes = {
@@ -26,7 +28,7 @@ export default class Uploader extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            fileList: props.data.map((val,idx) => {
+            fileList: props.data.map((val, idx) => {
                 val.idx = idx;
                 return val;
             }),
@@ -92,7 +94,7 @@ export default class Uploader extends React.Component {
                 continue;
             }
             this.createFileObj(files[key], (obj) => {
-                obj.status = ' ';
+                obj.status = '';
                 obj.idx = fileList.push(obj) - 1;
                 tempFileList.push(obj);
                 if (fileList.length === targetLen) {
@@ -119,6 +121,17 @@ export default class Uploader extends React.Component {
 
             const handleFileClick = onFileClick ? onFileClick : (e) => {
                 //TODO DEAFULE FILE CLICK FUNCTION.
+                GalleryService.showGallery({
+                    showDelete: true,
+                    src: url,
+                    onDelete: () => {
+                        const fileList = this.state.fileList;
+                        fileList.splice(idx, 1);
+                        this.setState({
+                            fileList
+                        });
+                    }
+                });
             };
 
             return (
@@ -149,9 +162,10 @@ export default class Uploader extends React.Component {
             [className]: className
         });
 
-        let inputStyle = {
-            display: `${fileList.length === limit ? 'none' : 'blcok'}`,
-        };
+        const clsIpt = classNames({
+            'weui-uploader__input-box' : true,
+            'weui-uploader__input-box__show': fileList.length === limit
+        });
 
         return (
             <div className={cls}>
@@ -163,7 +177,7 @@ export default class Uploader extends React.Component {
                     <ul className="weui-uploader__files">
                         {this.renderFileHTML()}
                     </ul>
-                    <div className="weui-uploader__input-box" style={inputStyle}>
+                    <div className={clsIpt}>
                         <input className="weui-uploader__input"
                                type="file"
                                disabled={disabled}

@@ -6,26 +6,30 @@ import { Icon } from '../Icon';
 export default class Select extends React.Component {
     static propTypes = {
         show: PropTypes.bool,
-        src: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.array
-        ]),
-        defaultIndex: PropTypes.number,
+        showDelete: PropTypes.bool,
+        src: PropTypes.string,
+        onDelete: PropTypes.func
     };
 
     static defaultProps = {
-        show: undefined,
-        src: '',
-        defaultIndex: 0
+        show: false,
+        showDelete: false,
+        src: ''
     };
 
     constructor (props) {
         super(props);
     }
 
+    handleClick (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        this.props.onDelete && this.props.onDelete();
+    }
+
     render () {
 
-        const {className, show, src, defaultIndex, ...others} = this.props;
+        const {className, show, showDelete, src, defaultIndex, onDelete, ...others} = this.props;
 
         const cls = classNames({
             'weui-gallery': true,
@@ -35,15 +39,14 @@ export default class Select extends React.Component {
         if (!show) {
             return false;
         }
-
         return (
             <div className={cls} style={{display: show ? 'block' : 'none'}} {...others}>
                 <span className="weui-gallery__img" style={{backgroundImage: `url(${src})`}}></span>
-                <div className="weui-gallery__opr">
+                {showDelete && <div className="weui-gallery__opr" onClick={this.handleClick.bind(this)}>
                     <a href="javascript:" className="weui-gallery__del">
                         <Icon value="delete" className="weui-icon_gallery-delete"/>
                     </a>
-                </div>
+                </div>}
             </div>
         );
     }

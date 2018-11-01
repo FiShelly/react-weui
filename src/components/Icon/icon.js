@@ -19,11 +19,11 @@ class Icon extends React.Component {
         size: 'small'
     };
 
-    render() {
-        const {value, size, className, circle,primary, ...others} = this.props;
+    render () {
+        const {value, size, className, circle, primary, ...others} = this.props;
 
         const cls = classNames({
-            [`weui-icon-${value}${circle || '-no-circle'}` ]: value !== 'loading',
+            [`weui-icon-${value}${circle ? '' : '-no-circle'}`]: value !== 'loading',
             'weui-icon_msg': size === 'large' && circle,
             'weui-loading': value === 'loading',
             [className]: className
