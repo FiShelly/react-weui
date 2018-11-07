@@ -4,7 +4,7 @@ import classNames from '../../util/classnames';
 import { Mask } from '../Mask';
 import './actionsheet.scss';
 
-export default class MediaBoxInfo extends React.Component {
+export default class Actionsheet extends React.Component {
     static propTypes = {
         menus: PropTypes.array,
         action: PropTypes.array,

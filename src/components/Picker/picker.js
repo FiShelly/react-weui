@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PickerGroup from './picker_group';
 import classNames from '../../util/classnames';
-import Mask from '../Mask';
+import {Mask} from '../Mask';
 
 /**
  *  Mobile select ui, currently only support Touch Events
