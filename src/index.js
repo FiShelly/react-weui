@@ -1,5 +1,6 @@
 import version from './version';
-
+import 'weui';
+import './styles.css';
 import { Button, ButtonPreview, ButtonArea, ButtonDialog, ButtonSwiped } from './components/Button';
 import { Cells, Cell, CellTitle, CellTips, CellBody, CellHeader, CellFooter } from './components/Cells';
 import { Actionsheet } from './components/Actionsheet';
@@ -84,7 +85,7 @@ import {
 } from './service'
 
 
-export default {
+export {
     version,
     Button,
     ButtonPreview,
